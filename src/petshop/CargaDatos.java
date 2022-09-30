@@ -81,6 +81,12 @@ public class CargaDatos extends javax.swing.JFrame {
             }
         });
 
+        ownerPet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ownerPetActionPerformed(evt);
+            }
+        });
+
         obsPet.setColumns(20);
         obsPet.setRows(5);
         jScrollPane1.setViewportView(obsPet);
@@ -255,6 +261,10 @@ public class CargaDatos extends javax.swing.JFrame {
        cmbSpecialPet.setSelectedIndex(0);
        
     }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void ownerPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerPetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ownerPetActionPerformed
 
    
 

@@ -1,7 +1,19 @@
 
 package petshop.logic;
 
-public class Mascota {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Mascota implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    
+    
     private int num_cliente;
     private String namePet;
     private String razaPet;
@@ -9,7 +21,7 @@ public class Mascota {
     private String alergicPet;
     private String specialPet;
     private String obsPet;
-    
+    @OneToOne
     private Duenio unDuenio;
 /*una mascota puede tener un solo dueño 1 a 1 dueño va de este lado, la mascota lo obtiene porqe mascota es el principal*/
     public Mascota() {
