@@ -1,8 +1,10 @@
 
 package petshop;
 
-public class CargaDatos extends javax.swing.JFrame {
+import petshop.logic.Controladora;
 
+public class CargaDatos extends javax.swing.JFrame {
+Controladora control = new Controladora();
     
     public CargaDatos() {
         initComponents();
@@ -52,6 +54,11 @@ public class CargaDatos extends javax.swing.JFrame {
         });
 
         saveBtn.setText("GUARDAR");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Raza");
 
@@ -265,6 +272,24 @@ public class CargaDatos extends javax.swing.JFrame {
     private void ownerPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerPetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ownerPetActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+       
+        /*
+        llamo a la logica creando una instancia hacia ella 
+        al hacer click en el boton, se llama a la controladora
+        */
+        String nameOfPet = namePet.getText();
+        String razaOfPet = razaPet.getText();
+        String color = colorPet.getText();
+        String owner = ownerPet.getText();
+        String observations = obsPet.getText();
+        String phone = telOwnerPet.getText();
+        /*los combo no vienen como texto, sino como objeto, alt + enter y le damos a Cast*/
+        String alergic = (String) cmbAlergicPet.getSelectedItem();
+        String special = (String) cmbSpecialPet.getSelectedItem();        
+        control.save(nameOfPet,razaOfPet,color,observations,phone,alergic,special,owner);
+    }//GEN-LAST:event_saveBtnActionPerformed
 
    
 
