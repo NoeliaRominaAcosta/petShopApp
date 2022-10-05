@@ -1,6 +1,7 @@
 
 package petshop.logic;
 
+import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import petshop.persistence.ControladoraPersistence;
@@ -31,6 +32,10 @@ public class Controladora {
        JDialog dialog = optionPane.createDialog("Exitoso");
        dialog.setAlwaysOnTop(true);
        dialog.setVisible(true);
+    }
+
+    public List<Mascota> traerMascotas() {
+        return controlPersis.traerMascotas();
     }
     
 }

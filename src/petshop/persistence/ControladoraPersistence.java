@@ -1,6 +1,7 @@
 
 package petshop.persistence;
 
+import java.util.List;
 import petshop.logic.Duenio;
 import petshop.logic.Mascota;
 
@@ -13,6 +14,11 @@ public class ControladoraPersistence {
       /*create owner on db*/
       duenioJpa.create(duenio);
       mascoJpa.create(mascota);
+    }
+
+    public List<Mascota> traerMascotas() {
+        return  mascoJpa.findMascotaEntities();
+        //findMascotaEntities busca todos los registros de la tabla mascota y lo retorno
     }
     
     
