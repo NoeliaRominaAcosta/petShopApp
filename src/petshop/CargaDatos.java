@@ -1,6 +1,8 @@
 
 package petshop;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import petshop.logic.Controladora;
 
 public class CargaDatos extends javax.swing.JFrame {
@@ -289,6 +291,12 @@ Controladora control = new Controladora();
         String alergic = (String) cmbAlergicPet.getSelectedItem();
         String special = (String) cmbSpecialPet.getSelectedItem();        
         control.save(nameOfPet,razaOfPet,color,observations,phone,alergic,special,owner);
+        
+         JOptionPane optionPane = new JOptionPane("Guardado exitoso");
+       optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+       JDialog dialog = optionPane.createDialog("Exitoso");
+       dialog.setAlwaysOnTop(true);
+       dialog.setVisible(true);
     }//GEN-LAST:event_saveBtnActionPerformed
 
    
