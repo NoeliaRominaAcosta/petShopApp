@@ -154,7 +154,22 @@ public class verDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
+       //controlo que la tabla no esté vacía
+        if(viewTable.getRowCount()>0){
+           if(viewTable.getSelectedRow() != -1){
+               //obtengo id de la mascota a editar
+                int num_cliente = Integer.parseInt(String.valueOf(viewTable.getValueAt(viewTable.getSelectedRow(),0)));
+              ModificarDatos pantallamodifDatos = new ModificarDatos(num_cliente);
+              pantallamodifDatos.setVisible(true);
+              pantallamodifDatos.setLocationRelativeTo(null);
+                
+            }else{
+               mostrarMensaje("no selecciono ninguna mascota","error","error al eliminar");
+           }
+       }
+        else{
+            mostrarMensaje("no hay nada para eliminar","error","error al eliminar");
+        }
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -166,6 +181,7 @@ public class verDatos extends javax.swing.JFrame {
      //que la tabla no esté vacia
         if(viewTable.getRowCount()>0){
            if(viewTable.getSelectedRow() != -1){
+                //obtengo id de la mascota a eliminar
                int num_cliente = Integer.parseInt(String.valueOf(viewTable.getValueAt(viewTable.getSelectedRow(),0)));
                        //convert to int
                        control.deletePet(num_cliente);

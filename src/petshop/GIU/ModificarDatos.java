@@ -1,15 +1,19 @@
 
-package petshop;
+package petshop.GIU;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import petshop.logic.Controladora;
+import petshop.logic.Mascota;
 
-public class CargaDatos extends javax.swing.JFrame {
-Controladora control = new Controladora();
-    
-    public CargaDatos() {
+public class ModificarDatos extends javax.swing.JFrame {
+Controladora control = null;
+    int num_cliente;
+    public ModificarDatos(int num_cliente) {
+        control = new Controladora();
+        this.num_cliente = num_cliente;
         initComponents();
+        CargarDatos(num_cliente);
     }
 
     @SuppressWarnings("unchecked")
@@ -44,7 +48,7 @@ Controladora control = new Controladora();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        jLabel1.setText("Carga de datos");
+        jLabel1.setText("Modificación de datos");
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Desktop\\recursos\\balloons.png")); // NOI18N
 
@@ -55,7 +59,7 @@ Controladora control = new Controladora();
             }
         });
 
-        saveBtn.setText("GUARDAR");
+        saveBtn.setText("ACTUALIZAR");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveBtnActionPerformed(evt);
@@ -101,6 +105,11 @@ Controladora control = new Controladora();
         jScrollPane1.setViewportView(obsPet);
 
         cmbAlergicPet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Si", "No" }));
+        cmbAlergicPet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAlergicPetActionPerformed(evt);
+            }
+        });
 
         cmbSpecialPet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Si", "No" }));
 
@@ -205,31 +214,33 @@ Controladora control = new Controladora();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58)
                         .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(227, 227, 227))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -299,6 +310,10 @@ Controladora control = new Controladora();
        dialog.setVisible(true);
     }//GEN-LAST:event_saveBtnActionPerformed
 
+    private void cmbAlergicPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAlergicPetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbAlergicPetActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -327,4 +342,29 @@ Controladora control = new Controladora();
     private javax.swing.JButton saveBtn;
     private javax.swing.JTextField telOwnerPet;
     // End of variables declaration//GEN-END:variables
+
+    private void CargarDatos(int num_cliente) {
+       Mascota masco = control.traerMascota(num_cliente);
+       
+        namePet.setText(masco.getNamePet());
+       razaPet.setText(masco.getRazaPet());
+       colorPet.setText(masco.getColorPet());
+       ownerPet.setText(masco.getUnDuenio().getName());
+       obsPet.setText(masco.getObsPet());
+       telOwnerPet.setText(masco.getUnDuenio().getTelOwner());
+       /*ponemos 0 ya que el combo se maneja como un array*/
+       if(masco.getAlergicPet().equals("Si")){
+       cmbAlergicPet.setSelectedIndex(1);
+       }else if(masco.getAlergicPet().equals("No")){
+       cmbAlergicPet.setSelectedIndex(2);
+       }
+       
+       
+         if(masco.getSpecialPet().equals("Si")){
+       cmbSpecialPet.setSelectedIndex(1);
+       }else if(masco.getSpecialPet().equals("No")){
+     cmbSpecialPet.setSelectedIndex(2);
+       }
+      
+    }
 }

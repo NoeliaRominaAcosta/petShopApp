@@ -1,8 +1,6 @@
 
 package petshop.GIU;
 
-import petshop.CargaDatos;
-
 
 public class Principal extends javax.swing.JFrame {
 
