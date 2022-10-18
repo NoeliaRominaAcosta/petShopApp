@@ -162,7 +162,7 @@ public class verDatos extends javax.swing.JFrame {
               ModificarDatos pantallamodifDatos = new ModificarDatos(num_cliente);
               pantallamodifDatos.setVisible(true);
               pantallamodifDatos.setLocationRelativeTo(null);
-                
+                this.dispose();
             }else{
                mostrarMensaje("no selecciono ninguna mascota","error","error al eliminar");
            }
@@ -170,6 +170,7 @@ public class verDatos extends javax.swing.JFrame {
         else{
             mostrarMensaje("no hay nada para eliminar","error","error al eliminar");
         }
+        
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -195,6 +196,7 @@ public class verDatos extends javax.swing.JFrame {
         else{
             mostrarMensaje("no hay nada para eliminar","error","error al eliminar");
         }
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     
@@ -222,7 +224,7 @@ public class verDatos extends javax.swing.JFrame {
     private javax.swing.JTable viewTable;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarTabla() {
+    public void cargarTabla() {
       //definir modelo 
         DefaultTableModel modeloTabla = new DefaultTableModel(){
             //filas y columnas no editables

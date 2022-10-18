@@ -9,6 +9,7 @@ import petshop.logic.Mascota;
 public class ModificarDatos extends javax.swing.JFrame {
 Controladora control = null;
     int num_cliente;
+    Mascota masco;
     public ModificarDatos(int num_cliente) {
         control = new Controladora();
         this.num_cliente = num_cliente;
@@ -301,13 +302,23 @@ Controladora control = null;
         /*los combo no vienen como texto, sino como objeto, alt + enter y le damos a Cast*/
         String alergic = (String) cmbAlergicPet.getSelectedItem();
         String special = (String) cmbSpecialPet.getSelectedItem();        
-        control.save(nameOfPet,razaOfPet,color,observations,phone,alergic,special,owner);
+       /* control.save(nameOfPet,razaOfPet,color,observations,phone,alergic,special,owner);
         
          JOptionPane optionPane = new JOptionPane("Guardado exitoso");
        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
        JDialog dialog = optionPane.createDialog("Exitoso");
        dialog.setAlwaysOnTop(true);
-       dialog.setVisible(true);
+       dialog.setVisible(true);*/
+       control.modificarMascota(masco,nameOfPet,razaOfPet,color,owner,observations,phone,alergic,special);
+       
+        mostrarMensaje("Edicion realizada correctamente", "info", "Edición correcta");
+        
+        verDatos pantalla = new verDatos();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+       //cierra la ventana
+        this.dispose();
+      
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void cmbAlergicPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAlergicPetActionPerformed
@@ -344,7 +355,7 @@ Controladora control = null;
     // End of variables declaration//GEN-END:variables
 
     private void CargarDatos(int num_cliente) {
-       Mascota masco = control.traerMascota(num_cliente);
+       this.masco = control.traerMascota(num_cliente);
        
         namePet.setText(masco.getNamePet());
        razaPet.setText(masco.getRazaPet());
@@ -366,5 +377,17 @@ Controladora control = null;
      cmbSpecialPet.setSelectedIndex(2);
        }
       
+    }
+     public void mostrarMensaje(String mensaje, String tipo, String titulo){
+         JOptionPane optionPane = new JOptionPane(mensaje);
+         if(tipo.equals("info")){
+              optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+         }else if(tipo.equals("error")){
+             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+         }
+      
+       JDialog dialog = optionPane.createDialog(titulo);
+       dialog.setAlwaysOnTop(true);
+       dialog.setVisible(true);
     }
 }
